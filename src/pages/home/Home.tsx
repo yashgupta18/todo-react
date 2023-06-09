@@ -5,6 +5,7 @@ import TodoForm from "../../components/TodoForm";
 import Logout from "../../components/Logout";
 import axios from "axios";
 import { useAuth, useAuthDispatch } from "../../context/AuthContext";
+import  {URL}  from '../../constants/url';
 
 const Home = () => {
   const user = useAuth();
@@ -16,7 +17,7 @@ const Home = () => {
       window.location.href = "/login";
     }
     dispatch({ type:"TODOS_START"})
-    const todos = await axios.get("http://localhost:4000/todos", {
+    const todos = await axios.get(`${URL}/todos`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

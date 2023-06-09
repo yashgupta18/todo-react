@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
 import { useAuth, useAuthDispatch } from "../../context/AuthContext";
 import Button from "../../components/Button";
+import  {URL}  from '../../constants/url';
 const Login = () => {
   const [authError, setError] = useState(null);
 
@@ -30,7 +30,7 @@ const Login = () => {
     dispatch({ type: "LOGIN_START" });
     try {
       // Make an API request to authenticate the user
-      const response = await axios.post('http://localhost:4000/login', { username, password });
+      const response = await axios.post(`${URL}/login`, { username, password });
 
       dispatch({ type: "LOGIN_SUCCESS", payload: response.data });
       navigate("/")
