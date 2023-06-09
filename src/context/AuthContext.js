@@ -25,6 +25,7 @@ const AuthReducer = (state, action) => {
       localStorage.setItem('accessToken',  action.payload.accessToken);
       localStorage.setItem('refreshToken', action.payload.refreshToken);
       const user = action.payload.user.name;
+      localStorage.setItem("user", JSON.stringify(user))
       const tokens = {
         accessToken: action.payload.accessToken,
         refreshToken: action.payload.refreshToken,
